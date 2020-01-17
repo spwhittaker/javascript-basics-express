@@ -30,4 +30,3 @@ module.exports = {
   firstCharacter,
   firstCharacters,
 };
-console.log(firstCharacters('bob', 2));
