@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 const { sayHello, uppercase, lowercase, firstCharacter, firstCharacters } = require('./strings');
-const { add, subtract, multiply } = require('./numbers');
+const { add, subtract, multiply, divide } = require('./numbers');
 
 app.get('/strings/hello/:string', (req, res) => {
   res.json({ result: sayHello(req.params.string) });
@@ -58,11 +58,22 @@ app.post('/numbers/multiply', (req, res) => {
   if (Number.isInteger(product)) {
     res.status(200).json({ result: product });
   } else if (!('a' in req.body) || !('b' in req.body)) {
-    res.status(400);
-    res.json({ error: 'Parameters "a" and "b" are required.' });
+    res.status(400).json({ error: 'Parameters "a" and "b" are required.' });
   } else {
-    res.status(400);
-    res.json({ error: 'Parameters "a" and "b" must be valid numbers.' });
+    res.status(400).json({ error: 'Parameters "a" and "b" must be valid numbers.' });
+  }
+});
+
+app.post('/numbers/divide', (req, res) => {
+  const a = parseInt(JSON.stringify(req.body.a), 10);
+  const b = parseInt(JSON.stringify(req.body.b), 10);
+  const divSolution = divide(a, b);
+  if (Number.isInteger(divSolution)) {
+    res.status(200).json({ result: divSolution });
+  } else if (!('a' in req.body) || !('b' in req.body)) {
+    res.status(400).json({ error: 'Parameters "a" and "b" are required.' });
+  } else if (b === 0) {
+    res.status(400).json({ error: 'Unable to divide by 0.' });
   }
 });
 
