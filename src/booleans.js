@@ -1,11 +1,9 @@
 const negate = a => {
-  /*   const result = !a;
-      return result; */
   return !a;
 };
 
 const both = (a, b) => {
-  if (a && b == true) {
+  if (a && b === true) {
     return true;
   }
   return false;
@@ -94,11 +92,11 @@ const containsVowels = string => {
   let vowelCount = 0;
   for (let i = 0; i < string.length; i++) {
     if (
-      lowerString[i] == "a" ||
-      lowerString[i] == "e" ||
-      lowerString[i] == "i" ||
-      lowerString[i] == "o" ||
-      lowerString[i] == "u"
+      lowerString[i] == 'a' ||
+      lowerString[i] == 'e' ||
+      lowerString[i] == 'i' ||
+      lowerString[i] == 'o' ||
+      lowerString[i] == 'u'
     ) {
       vowelCount++;
     }
@@ -132,5 +130,5 @@ module.exports = {
   isSquare,
   startsWith,
   containsVowels,
-  isLowerCase
+  isLowerCase,
 };
