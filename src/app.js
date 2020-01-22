@@ -13,6 +13,7 @@ const {
 } = require('./lib/strings');
 const { add, subtract, multiply, divide, remainder } = require('./lib/numbers');
 const { negate, truthiness, isOdd, startsWith } = require('./lib/booleans');
+const { getNthElement } = require('./lib/arrays');
 
 app.get('/strings/hello/:string', (req, res) => {
   res.json({ result: sayHello(req.params.string) });
@@ -120,6 +121,10 @@ app.get('/booleans/:string0/starts-with/:string1', (req, res) => {
     res.status(400).json({ error: 'Parameter "character" must be a single character.' });
   }
   res.status(200).json({ result: startsWith(req.params.string1, req.params.string0) });
+});
+
+app.post('/arrays/element-at-index/:ind', (req, res) => {
+  res.status(200).json({ result: getNthElement(req.params.ind, req.body.array) });
 });
 
 module.exports = app;
