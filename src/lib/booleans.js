@@ -1,7 +1,4 @@
-const negate = a => {
-  return !a;
-};
-
+const negate = a => !a;
 const both = (a, b) => {
   if (a && b === true) {
     return true;
