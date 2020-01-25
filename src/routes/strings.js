@@ -1,5 +1,4 @@
 const express = require('express');
-const { firstCharacter, firstCharacters } = require('../lib/strings');
 
 const { hello, upper, lower, stringQuery } = require('../controllers/strings');
 
